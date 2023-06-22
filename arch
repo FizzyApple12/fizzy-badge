@@ -1,9 +1,0 @@
-core0                           core1
-rendering                       pick next effect and wait
-[time to render] -------------> [int]
-transition + rendering          rendering
-[transfer control] -----------> [int]
-pick next effect and wait       rendering
-[int] <------------------------ [time to render]
-rendering                       transition + rendering
-[int] <------------------------ [transfer control]

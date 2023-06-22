@@ -6,6 +6,8 @@
 #include "libraries/pico_graphics/pico_graphics.hpp"
 #include "libraries/interstate75/interstate75.hpp"
 
+#include "common.hpp"
+
 namespace Transitions {
     void swipe_left(PicoGraphics_PenRGB888 graphics, clock_t time, uint8_t* from, uint8_t* to) {
         int x = map(time, 0, 1000, 0, 64);

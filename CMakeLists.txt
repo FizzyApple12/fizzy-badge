@@ -11,15 +11,13 @@ set(OUTPUT_NAME badge_firmware)
 
 pico_sdk_init()
 
-include_directories(${PROJECT_SOURCE_DIR})
-
 add_subdirectory(pimoroni-pico/common)
 add_subdirectory(pimoroni-pico/drivers)
 add_subdirectory(pimoroni-pico/libraries)
 
 add_executable(${OUTPUT_NAME} 
-    badge_firmware.cpp
-    heatshrink_decoder.cpp
+    src/badge_firmware.cpp
+    src/heatshrink/heatshrink_decoder.cpp
 )
 
 # enable usb output
@@ -28,6 +26,10 @@ pico_enable_stdio_usb(${OUTPUT_NAME} 1)
 pico_add_extra_outputs(${OUTPUT_NAME})
 
 target_compile_definitions(${OUTPUT_NAME} PRIVATE PICO_PANIC_FUNCTION=usr_panic)
+
+target_include_directories(badge_firmware PRIVATE
+    src/heatshrink
+)
 
 target_link_libraries(${OUTPUT_NAME}
     pico_stdlib

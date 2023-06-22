@@ -1,5 +1,8 @@
 #include "pico/rand.h"
 
+#ifndef BAG_HPP
+#define BAG_HPP
+
 void bag_shuffle(int* bag, int* bag_pointer, int bag_length) {
     int previous_item = bag[*bag_pointer];
 
@@ -47,3 +50,5 @@ int bag_pick_next(int* bag, int* bag_pointer, int bag_length) {
 
     return bag_pick_current(bag, (*bag_pointer));
 }
+
+#endif

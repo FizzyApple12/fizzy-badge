@@ -9,16 +9,9 @@
 #include "libraries/pico_graphics/pico_graphics.hpp"
 #include "libraries/interstate75/interstate75.hpp"
 
-#include "bag.cpp"
-
-#define HUB75_WIDTH 64
-#define HUB75_HEIGHT 64
-
-#define EFFECT_MILLIS 7500
-#define TRANSITION_MILLIS 1000
-
-#define HW_REV "2.1.0"
-#define FW_REV "3.2.337"
+#include "config.hpp"
+#include "common.hpp"
+#include "bag.hpp"
 
 using namespace pimoroni;
 
@@ -31,24 +24,7 @@ void __isr dma_complete() {
     hub75.dma_complete();
 }
 
-clock_t clock() {
-    return (clock_t) time_us_64() / 1000;
-}
-
-long map(long x, long in_min, long in_max, long out_min, long out_max) {
-    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
-
-#include "mrrfLogo.cpp"
-#include "quadranglesLogo.cpp"
-#include "fizzyLogo.cpp"
-#include "drDaveFunny.cpp"
-#include "shader1.cpp"
-#include "shader2.cpp"
-#include "shader3.cpp"
-#include "shader4.cpp"
-#include "shader5.cpp"
-#include "nyancat.cpp"
+#include "effects/effects.h"
 
 typedef void (*init_function)();
 typedef void (*effect_function)(PicoGraphics_PenRGB888);
@@ -106,18 +82,6 @@ static uint8_t pre_frame[HUB75_WIDTH * HUB75_HEIGHT * sizeof(uint32_t)];
 
 static int transition_bag[NUM_TRANSITIONS];
 static int transition_bag_pointer = NUM_TRANSITIONS + 1;
-
-void draw_screenshot(PicoGraphics_PenRGB888 target_graphics, uint8_t* screenshot, int tx, int ty) {
-    for (uint x = 0; x < HUB75_WIDTH; x++) {
-        for (uint y = 0; y < HUB75_HEIGHT; y++) {
-            int byte_target = (x * sizeof(uint32_t)) + (y * sizeof(uint32_t) * HUB75_WIDTH);
-
-            target_graphics.set_pen(screenshot[byte_target + 2], screenshot[byte_target + 1], screenshot[byte_target]);
-
-            target_graphics.pixel(Point(x + tx, y + ty));
-        }
-    }
-}
 
 static int run_num = 0;
 
