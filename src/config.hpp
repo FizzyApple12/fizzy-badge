@@ -8,6 +8,6 @@
 #define TRANSITION_MILLIS 1000
 
 #define HW_REV "2.1.0"
-#define FW_REV "3.2.337"
+#define FW_REV "3.2.342"
 
 #endif

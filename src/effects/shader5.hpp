@@ -6,7 +6,7 @@
 #include "libraries/pico_graphics/pico_graphics.hpp"
 #include "libraries/interstate75/interstate75.hpp"
 
-#define NUM_QUOTES 5
+#define NUM_QUOTES 9
 
 namespace Shader5 {
     std::string quotes[NUM_QUOTES] = {
@@ -14,7 +14,11 @@ namespace Shader5 {
         "Go \nQuadrangles!",
         "Go ICE \nRobotics!",
         "Something clever",
-        "Why did I \nspend 4 days making this?"
+        "Why did I \nspend 4 days making this?",
+        "github.com/\nFizzyApple12/\nfizzy-badge",
+        "Now with\n100% less\nspaghetti",
+        "Have fun at\nMRRF",
+        "Tell Dr. Dave\nthat he's cool"
     };
 
     int selectedQuote = 0;
