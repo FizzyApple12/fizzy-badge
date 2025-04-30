@@ -32,18 +32,18 @@ typedef void (*reset_function)();
 
 void no_reset() {}
 
-#define NUM_EFFECTS 10
+#define NUM_EFFECTS 8
 
 static int effect_bag[NUM_EFFECTS];
 static int effect_bag_pointer = NUM_EFFECTS + 1;
 
 static init_function effects_init[NUM_EFFECTS] = {
-    MRRFLogo::init,
-    QuadranglesLogo::init,
+    // MRRFLogo::init,
+    // QuadranglesLogo::init,
     FizzyLogo::init,
-    DrDaveFunny::init,
+    // DrDaveFunny::init,
     NyanCat::init,
-//    RickRoll::init,
+    RickRoll::init,
     Shader1::init,
     Shader2::init,
     Shader3::init,
@@ -52,12 +52,12 @@ static init_function effects_init[NUM_EFFECTS] = {
 };
 
 static effect_function effects[NUM_EFFECTS] = {
-    MRRFLogo::main,
-    QuadranglesLogo::main,
+    // MRRFLogo::main,
+    // QuadranglesLogo::main,
     FizzyLogo::main,
-    DrDaveFunny::main,
+    // DrDaveFunny::main,
     NyanCat::main,
-//    RickRoll::main,
+    RickRoll::main,
     Shader1::main,
     Shader2::main,
     Shader3::main,
@@ -66,9 +66,10 @@ static effect_function effects[NUM_EFFECTS] = {
 };
 
 static reset_function effects_reset[NUM_EFFECTS] = {
+    // no_reset,
+    // no_reset,
     no_reset,
-    no_reset,
-    no_reset,
+    // no_reset,
     no_reset,
     no_reset,
     no_reset,
@@ -109,12 +110,12 @@ static transition_function transitions[NUM_TRANSITIONS] = {
 bool run_transition(PicoGraphics_PenRGB888 from_graphics, PicoGraphics_PenRGB888 to_graphics) {
     if (run_num == 0) {
         transition_start = clock();
-            
+
         bag_pick_next(transition_bag, &transition_bag_pointer, NUM_TRANSITIONS);
     }
 
     run_num++;
-    
+
     clock_t time_spent = clock() - transition_start;
 
     memcpy(pre_frame, from_graphics.frame_buffer, HUB75_WIDTH * HUB75_HEIGHT * sizeof(uint32_t));
@@ -186,7 +187,7 @@ void __attribute__((noreturn)) __printflike(1, 0) usr_panic(const char *fmt, ...
 
     graphics1.set_pen(0xff, 0x00, 0x00);
     graphics1.text(message, {0, 9}, 64, 1);
-    
+
     hub75.update(&graphics1);
 
     int i;

@@ -10,15 +10,20 @@
 
 namespace Shader5 {
     std::string quotes[NUM_QUOTES] = {
-        "RepRap, yeah!",
-        "Go \nQuadrangles!",
-        "Go ICE \nRobotics!",
+        // "RepRap, yeah!",
+        // "Go \nQuadrangles!",
+        // "Go ICE \nRobotics!",
+        "Shader?\nI hardly know er!"
         "Something clever",
         "Why did I \nspend 4 days making this?",
         "github.com/\nFizzyApple12/\nfizzy-badge",
         "Now with\n100% less\nspaghetti",
-        "Have fun at\nMRRF",
-        "Tell Dr. Dave\nthat he's cool"
+        "100% C++",
+        "No Rust?\nCry about it!",
+        "Of in the cold\nfood out hot in\neat the food",
+        "You're telling\nme a shrimp\nfried this rice?"
+        // "Have fun at\nMRRF",
+        // "Tell Dr. Dave\nthat he's cool"
     };
 
     int selectedQuote = 0;
@@ -47,7 +52,7 @@ namespace Shader5 {
         run_num++;
 
         graphics.set_pen(0xff, 0xff, 0xff);
-        
+
         graphics.text("Fizzy Says:", {0, 0}, 64, 1);
 
         if (clock() - start_time >= 2500) {
