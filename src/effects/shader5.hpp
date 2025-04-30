@@ -13,7 +13,7 @@ namespace Shader5 {
         // "RepRap, yeah!",
         // "Go \nQuadrangles!",
         // "Go ICE \nRobotics!",
-        "Shader?\nI hardly know er!"
+        "Shader?\nI hardly know er!",
         "Something clever",
         "Why did I \nspend 4 days making this?",
         "github.com/\nFizzyApple12/\nfizzy-badge",
@@ -21,9 +21,9 @@ namespace Shader5 {
         "100% C++",
         "No Rust?\nCry about it!",
         "Of in the cold\nfood out hot in\neat the food",
-        "You're telling\nme a shrimp\nfried this rice?"
+        "You're telling\nme a shrimp\nfried this rice?",
         // "Have fun at\nMRRF",
-        // "Tell Dr. Dave\nthat he's cool"
+        // "Tell Dr. Dave\nthat he's cool",
     };
 
     int selectedQuote = 0;
